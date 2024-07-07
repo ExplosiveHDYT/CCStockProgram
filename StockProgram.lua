@@ -1,3 +1,4 @@
+while true do 
 local periList = peripheral.getNames()
 local TotalChestItems = 0
 local Homogenous = true
@@ -35,16 +36,13 @@ print("Enter the amount of items demanded in stacks")
 
 Demand = io.read()*64
 
-if Homogeneous == false then
-error()
-else
 Supply = TotalChestItems
 print("For", commonItemType)
 print("Supply Is", Supply)
 print("Demand Is", Demand)
 print("Surplus/Deficit is", Supply-Demand)
-
 monitor = peripheral.wrap("right")
+monitor.clear()
 monitor.setTextScale(1)
 monitor.setCursorPos(1,1)
 monitor.write("For "..commonItemType)
@@ -54,4 +52,5 @@ monitor.setCursorPos(1,3)
 monitor.write("Demand Is "..Demand)
 monitor.setCursorPos(1,4)
 monitor.write("Surplus/Deficit is "..Supply-Demand)
+monitor.setCursorPos(1,1)
 end
