@@ -18,7 +18,7 @@ for _, periName in ipairs(periList) do
 
         -- Check if all items in the chest are of the same type
         for slot, item in pairs(chest.list()) do
-            --print(item.count, item.name, slot)
+            print(item.count, item.name, slot)
             TotalChestItems = TotalChestItems + tonumber(item.count)
 
             if commonItemType ~= item.name then
@@ -27,12 +27,11 @@ for _, periName in ipairs(periList) do
         end
     end
 end
---[[
+
 print("Common Item Type:", commonItemType)
 print("Total Chest Items:", TotalChestItems)
 print("Are all Chests Homogeneous:", Homogenous)
 print("Enter the amount of items demanded in stacks")
-]]
 
 Demand = io.read()*64
 
@@ -44,4 +43,15 @@ print("For", commonItemType)
 print("Supply Is", Supply)
 print("Demand Is", Demand)
 print("Surplus/Deficit is", Supply-Demand)
+
+monitor = peripheral.wrap("right")
+monitor.setTextScale(1)
+monitor.setCursorPos(1,1)
+monitor.write("For "..commonItemType)
+monitor.setCursorPos(1,2)
+monitor.write("Supply Is "..Supply)
+monitor.setCursorPos(1,3)
+monitor.write("Demand Is "..Demand)
+monitor.setCursorPos(1,4)
+monitor.write("Surplus/Deficit is "..Supply-Demand)
 end
